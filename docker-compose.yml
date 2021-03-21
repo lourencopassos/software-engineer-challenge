@@ -3,13 +3,18 @@ services:
   app:
     container_name: pic_pay_app
     restart: always
-    build: .
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
     ports:
       - '80:3000'
     links:
       - 'db'
+    depends_on:
+      - 'db'
   db:
-    image: mysql:8.0.20
+    build: ./docker/db
+    image: mysql:latest
     container_name: pic_pay_db
     ports:
       - ${MYSQL_PORT}:${MYSQL_PORT}
@@ -19,6 +24,7 @@ services:
     command:
       - --default-authentication-plugin=mysql_native_password
     environment:
-      - MYSQL_USER=${MYSQL_USER}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+    security_opt:
+      - seccomp:unconfined
