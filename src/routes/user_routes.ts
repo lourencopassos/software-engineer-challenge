@@ -1,5 +1,4 @@
 import express from "express";
-import { UserBusiness } from "../business/user_business";
 import { UserController } from "../controller/user_controller";
 
 
