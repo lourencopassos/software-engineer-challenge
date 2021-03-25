@@ -24,7 +24,8 @@ O desafio é criar uma API REST que busca usuarios pelo nome e username a partir
 1. `git clone` to download the repository;
 2. `npm install` to install the dependencies;
 3. `touch .env && cp .env.example .env` to create a .env file;
-4. `docker-compose up` to run the application;
+4. Put the file `users.csv` at docker/db folder (check the db container Dockerfile if you have any doubts);
+5. `docker-compose up` to run the application;
 
 ## 🛤 Endpoints
 
